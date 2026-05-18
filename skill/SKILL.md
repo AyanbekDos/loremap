@@ -1,4 +1,9 @@
-# llm-wiki-theory-engine
+---
+name: loremap
+description: AI карта любого mystery-сериала или книжной серии. Юзер даёт название (например "Severance"), skill сам находит fandom + reddit, скрапит ~500 страниц + 200 теорий, строит mystery graph и генерирует locked theory predictions с adversarial review через подагент. Триггеры - "LoreMap для X", "сделай теории про сериал Y", "построй карту шоу Z", "предскажи финал Z".
+---
+
+# LoreMap
 
 AI-методология которая берёт любой mystery-сериал или книжную серию и строит из неё knowledge base + генерирует обоснованные теории + предсказания финала.
 
