@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+*.log
+
+# Show projects created by users (these stay on their disk, not in our repo)
+test-*/
+*-theories/
+*-loremap/

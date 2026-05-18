@@ -1,0 +1,482 @@
+nodes:
+- id: boy_in_white
+  name: Boy in White
+  type: entity
+  canon_summary: A mysterious vision appearing to select individuals in the Township,
+    offering guidance and safety advice. He first appeared to Victor in the 1970s
+    and later to Ethan, and instructed Christopher to go through the Bottle Tree to
+    free the children.
+  priority: core_required
+  open_questions:
+  - What is the true nature/origin of the Boy in White?
+  - Is he opposed to the Man in Yellow or an independent benevolent force?
+  - Why does he appear only to specific people (Victor, Ethan, Christopher)?
+  - What is his connection to the ritual murder of the children?
+- id: man_in_yellow
+  name: Man in Yellow
+  type: entity
+  canon_summary: An unknown malevolent entity, the main antagonist, who may control
+    the Township. He can take human forms (currently posing as Sophia), manipulates
+    inhabitants like Sara, and killed Jim Matthews after warning against digging the
+    basement hole.
+  priority: core_required
+  open_questions:
+  - What exactly is the Man in Yellow and does he control the Township?
+  - Why does he warn against digging in the basement?
+  - How can he time-travel/encounter Julie across timelines?
+  - What is his connection to Sophia and other forms he takes?
+- id: township
+  name: The Township
+  type: concept
+  canon_summary: A mysterious area in the middle of the US that traps all who enter,
+    marked by a Fallen Tree at its entrance and looping roads. Contains the Town,
+    Colony House, Tunnels, Forest, Faraway Trees, Lighthouse, and the Dungeon.
+  priority: core_required
+  open_questions:
+  - Where/what is the Township physically and metaphysically?
+  - Who or what created it and why?
+  - How does it have functioning electricity without external connections?
+  - Is escape possible and how?
+- id: ghoulish_children
+  name: Ghoulish Children
+  type: entity
+  canon_summary: Visions or spirits haunting Tabitha after her time in the Caves,
+    associated with the Lighthouse mysteries. They chant 'anghkooey' and appeared
+    first in the cave chamber with stacked stones.
+  priority: core_required
+  open_questions:
+  - Are the Ghoulish Children the same as the ritually murdered children Boy in White
+    mentioned?
+  - What does 'anghkooey' mean?
+  - How does freeing them relate to escaping the Township?
+  - Why do they appear specifically to Tabitha?
+- id: bottle_trees
+  name: Bottle Trees
+  type: concept
+  canon_summary: Trees adorned with glass bottles containing papers with four-digit
+    numbers (possibly dates). One in the Township is a unique Farway Tree that always
+    transports to the Lighthouse. Miranda Kavanaugh created similar art installations
+    in Maine before becoming trapped.
+  priority: core_required
+  open_questions:
+  - What do the four-digit numbers on the papers signify?
+  - Why did Miranda create Bottle Tree installations before being trapped?
+  - How does the Bottle Tree connect to the Lighthouse mystery?
+  - Why was Miranda's body found at a Bottle Tree?
+- id: faraway_trees
+  name: Faraway Trees
+  type: concept
+  canon_summary: Mysterious trees with hollows that transport people to various locations
+    across the Township, possibly even outside it. They may have sent Tabitha to a
+    hospital in the outside world.
+  priority: core_required
+  open_questions:
+  - Can Faraway Trees lead out of the Township entirely?
+  - Who/what determines the destination?
+  - Why does the Bottle Tree variant always lead to the Lighthouse?
+  - How did Tabitha appear in a hospital outside?
+- id: talismans
+  name: Talismans
+  type: concept
+  canon_summary: Rune-inscribed rocks discovered by Boyd in the Talisman Cave that
+    repel Creatures within enclosed spaces. They lose power if a door or window is
+    opened.
+  priority: likely_supported
+  open_questions:
+  - Who created the Talismans and inscribed the runes?
+  - What is the meaning of the rune-like symbols?
+  - Why do they only work in enclosed spaces?
+- id: from_symbol
+  name: The Symbol
+  type: concept
+  canon_summary: A mysterious symbol associated with the Township that frequently
+    appears in Jade's visions, and previously appeared to Christopher before everyone
+    in Victor's childhood Town was killed. The symbol formed from roots on the tunnel
+    ceiling above Jade in the cavern.
+  priority: core_required
+  open_questions:
+  - What does the Symbol represent or signify?
+  - Why does it appear to specific people (Christopher, Jade)?
+  - Why does obsession with it precede calamity?
+  - How is it connected to the roots of the Farway Trees?
+- id: creatures
+  name: The Creatures
+  type: entity
+  canon_summary: Humanoid monsters that hunt at night, with hypnotic abilities, intimate
+    knowledge of inhabitants' lives, and the habit of eviscerating victims. They sleep
+    in the Tunnels during the day and wear human stereotype clothing.
+  priority: core_required
+  open_questions:
+  - What are the Creatures and where do they come from?
+  - How do they know every inhabitant's name and history?
+  - What do they do with the organs they remove?
+  - Are they connected to the Man in Yellow?
+- id: music_box_monster
+  name: Music Box Monster
+  type: entity
+  canon_summary: A malevolent entity linked to an aged music box with a spinning ballerina,
+    dwelling in a Dungeon in the forest. It plagues victims with visions, can render
+    them catatonic, and kills in their sleep.
+  priority: likely_supported
+  open_questions:
+  - What is the Music Box Monster's true form and origin?
+  - How is it related to the Man in Yellow or other Township forces?
+  - Who is Martin and how did he end up shackled in the Dungeon?
+  - Why does Boyd's worm-infection link to this monster?
+- id: lighthouse
+  name: The Lighthouse
+  type: concept
+  canon_summary: Also known as the Tower, located deep in the Forest and accessible
+    via the unique Bottle Tree. Miranda believed it held the key to freeing the children
+    and escaping the Township. Tabitha's visions feature its stairs.
+  priority: core_required
+  open_questions:
+  - What is inside the Lighthouse?
+  - Why is a lighthouse located far from any water?
+  - How does it relate to freeing the Ghoulish Children?
+  - Why have all those chosen to reach it (including Miranda) failed?
+- id: victor
+  name: Victor Kavanaugh
+  type: entity
+  canon_summary: The longest-surviving person in the Township, trapped since 1978
+    as a child with his mother Miranda and sister Eloise. He witnessed the Boy in
+    White's interactions with Christopher and survived a mass killing of all other
+    inhabitants in his childhood.
+  priority: core_required
+  open_questions:
+  - Why has Victor survived so long when others die?
+  - What is the full content of memories he has blocked out?
+  - How does his unique knowledge connect to escape?
+- id: tabitha
+  name: Tabitha Matthews
+  type: entity
+  canon_summary: Wife of Jim and mother of Julie, Ethan, and deceased Thomas. Her
+    childhood featured recurring nightmares of a Settlement with Totems. She is connected
+    to the Ghoulish Children and her digging in the basement was warned against by
+    the Man in Yellow.
+  priority: core_required
+  open_questions:
+  - Why did Tabitha have Township-related nightmares as a child?
+  - What is her role in freeing the Ghoulish Children?
+  - How did she end up in an outside hospital via a Faraway Tree?
+  - Is she one of the 'chosen' like Miranda?
+- id: miranda
+  name: Miranda Kavanaugh
+  type: entity
+  canon_summary: Mother of Victor and Eloise, an artist from Camden, Maine who began
+    having Township visions after taking acid by her Bottle Tree art installation.
+    She became trapped in 1978 and died near a Bottle Tree trying to reach the Lighthouse
+    to 'free the children'.
+  priority: likely_supported
+  open_questions:
+  - Why was Miranda 'chosen' to free the children?
+  - Who were the others chosen before her who failed?
+  - How did acid trigger her visions of the Township?
+  - What is the significance of her Maine Bottle Tree installations?
+- id: fatima_baby
+  name: Fatima Hassan / unborn child
+  type: entity
+  canon_summary: Resident of Colony House from Iran, married to Ellis Stevens. Became
+    trapped on February 28, 2021 while driving from Boulder to Portland. She serves
+    as Julie's proxy when the Matthews arrive.
+  priority: may_remain_ambiguous
+  open_questions:
+  - What is the significance of her unborn child?
+  - Does her pregnancy connect to Township supernatural forces?
+- id: boyd
+  name: Boyd Stevens
+  type: entity
+  canon_summary: Sheriff and de-facto Mayor of the Town, Iraq War veteran specializing
+    in logistics. He discovered the Talismans in the Talisman Cave, and was transported
+    via Faraway Tree to the Music Box Monster's Dungeon, where Martin infected him
+    with worms via blood.
+  priority: core_required
+  open_questions:
+  - What is the nature of the worms inside Boyd?
+  - What was Abby's connection to it 'all being a dream'?
+  - Why have the Creatures targeted Boyd specifically to break?
+- id: jade
+  name: Jade Herrera
+  type: entity
+  canon_summary: Wealthy software developer who arrived in Town the same day as the
+    Matthews. He repeatedly sees visions of the Symbol, including in the Root Cellar,
+    on trees with Civil War corpses, and in the caves where roots formed the Symbol
+    on the tunnel ceiling.
+  priority: core_required
+  open_questions:
+  - Why is Jade chosen to see the Symbol like Christopher was?
+  - What is the significance of his Civil War soldier visions?
+  - What melody at the Bottle Tree did Jade play that summoned the Man in Yellow?
+  - Is Jade in danger of the same fate as Christopher?
+edges:
+- from: boy_in_white
+  to: victor
+  relation: guides / appeared_to
+  evidence_type: canon_explicit
+  evidence_quote: The Boy in White first appeared to Victor when he was a child in
+    the 1970s
+- from: boy_in_white
+  to: bottle_trees
+  relation: has_knowledge_of
+  evidence_type: canon_explicit
+  evidence_quote: instructing him to go through the Bottle Tree in order to free the
+    children
+- from: boy_in_white
+  to: ghoulish_children
+  relation: has_knowledge_of
+  evidence_type: canon_explicit
+  evidence_quote: the ritual murder of the children by their loved ones... they poured
+    their hope into the roots that became the Symbol
+- from: boy_in_white
+  to: from_symbol
+  relation: has_knowledge_of
+  evidence_type: canon_explicit
+  evidence_quote: they poured their hope into the roots that became the Symbol
+- from: boy_in_white
+  to: faraway_trees
+  relation: explains_origin_of
+  evidence_type: canon_explicit
+  evidence_quote: the roots became the Farway Trees
+- from: boy_in_white
+  to: tabitha
+  relation: guides
+  evidence_type: canon_explicit
+  evidence_quote: Victor finds her, having been told to wait for her by the Boy in
+    White
+- from: boy_in_white
+  to: creatures
+  relation: opposes / warns_against
+  evidence_type: canon_inferred
+  evidence_quote: He only appears to specific people, and often provides helpful advice
+    for safety
+- from: man_in_yellow
+  to: township
+  relation: may_control
+  evidence_type: canon_explicit
+  evidence_quote: He may be the thing controlling the Township
+- from: man_in_yellow
+  to: tabitha
+  relation: warned_against_digging
+  evidence_type: canon_explicit
+  evidence_quote: tells him that his wife should not be digging the hole in their
+    house
+- from: man_in_yellow
+  to: creatures
+  relation: associated_with
+  evidence_type: canon_inferred
+  evidence_quote: main antagonist... malevolent entity that resides in the Township
+- from: man_in_yellow
+  to: jade
+  relation: appeared_after_melody_played
+  evidence_type: canon_explicit
+  evidence_quote: After Jade Herrera plays the melody at the Bottle Tree... they are
+    greeted by the Man in the Yellow Suit, who compliments Jade's playing
+- from: man_in_yellow
+  to: bottle_trees
+  relation: connected_to
+  evidence_type: canon_explicit
+  evidence_quote: After Jade Herrera plays the melody at the Bottle Tree, Jim goes
+    to the RV. He is then discovered by his daughter, Julie
+- from: creatures
+  to: township
+  relation: is_part_of
+  evidence_type: canon_explicit
+  evidence_quote: It is home to the terrifying Creatures that emerge at night
+- from: creatures
+  to: talismans
+  relation: repelled_by
+  evidence_type: canon_explicit
+  evidence_quote: the Talismans repelled the Creatures from entering
+- from: creatures
+  to: miranda
+  relation: killed
+  evidence_type: canon_explicit
+  evidence_quote: she was killed by the Creatures just a few steps from one of the
+    Bottle Trees
+- from: talismans
+  to: boyd
+  relation: discovered_by
+  evidence_type: canon_explicit
+  evidence_quote: The talismans were first discovered by Boyd Stevens in the Talisman
+    Cave
+- from: bottle_trees
+  to: lighthouse
+  relation: leads_to
+  evidence_type: canon_explicit
+  evidence_quote: one of which is a unique Farway Tree that leads to the Lighthouse
+- from: bottle_trees
+  to: faraway_trees
+  relation: is_part_of
+  evidence_type: canon_explicit
+  evidence_quote: this one always transports people to same place
+- from: bottle_trees
+  to: miranda
+  relation: created_by_outside
+  evidence_type: canon_explicit
+  evidence_quote: Bottle Trees in the outside world in Maine, which were art installations
+    created by Miranda Kavanaugh
+- from: bottle_trees
+  to: miranda
+  relation: site_of_death
+  evidence_type: canon_explicit
+  evidence_quote: she was killed by the Creatures just a few steps from one of the
+    Bottle Trees
+- from: faraway_trees
+  to: township
+  relation: is_part_of
+  evidence_type: canon_explicit
+  evidence_quote: trees with large hollows that can transport people to various locations
+    across the Township
+- from: faraway_trees
+  to: from_symbol
+  relation: created_from
+  evidence_type: canon_explicit
+  evidence_quote: the roots became the Farway Trees
+- from: lighthouse
+  to: ghoulish_children
+  relation: imprisons / holds
+  evidence_type: canon_explicit
+  evidence_quote: to save the children locked in the tower
+- from: lighthouse
+  to: miranda
+  relation: destination_of
+  evidence_type: canon_explicit
+  evidence_quote: Miranda went in search of the Lighthouse in order to 'free the children'
+- from: lighthouse
+  to: tabitha
+  relation: appears_in_visions_of
+  evidence_type: canon_explicit
+  evidence_quote: a vision that cuts between walking through the main street of town
+    and ascending the stairs of a tower
+- from: ghoulish_children
+  to: tabitha
+  relation: haunts
+  evidence_type: canon_explicit
+  evidence_quote: visions or spirits that haunt Tabitha Matthews after her time in
+    the Caves
+- from: ghoulish_children
+  to: miranda
+  relation: appeared_in_visions_of
+  evidence_type: canon_explicit
+  evidence_quote: she began to have visions of the Township, including... the Ghoulish
+    Children
+- from: from_symbol
+  to: jade
+  relation: haunts / appears_to
+  evidence_type: canon_explicit
+  evidence_quote: a mysterious symbol associated with the Township that frequently
+    appears in Jade's visions
+- from: from_symbol
+  to: victor
+  relation: witnessed_by_in_childhood
+  evidence_type: canon_explicit
+  evidence_quote: It previously appeared to Christopher, an inhabitant during Victor's
+    childhood
+- from: victor
+  to: miranda
+  relation: son_of
+  evidence_type: canon_explicit
+  evidence_quote: his mother, Miranda, and sister Eloise, became trapped in the Township
+- from: victor
+  to: boy_in_white
+  relation: views_as_friend
+  evidence_type: canon_explicit
+  evidence_quote: Victor views Ethan Matthews and the Boy in White as his best friends
+- from: victor
+  to: tabitha
+  relation: guides_to_bottle_tree
+  evidence_type: canon_explicit
+  evidence_quote: Victor reluctantly leads her to the Bottle Tree
+- from: victor
+  to: township
+  relation: longest_survivor_in
+  evidence_type: canon_explicit
+  evidence_quote: the longest-surviving person in the Township
+- from: miranda
+  to: lighthouse
+  relation: died_seeking
+  evidence_type: canon_explicit
+  evidence_quote: Miranda tragically died trying to find a way to escape by journeying
+    to the Lighthouse
+- from: miranda
+  to: ghoulish_children
+  relation: sought_to_free
+  evidence_type: canon_explicit
+  evidence_quote: Miranda believed that she was chosen to free the children from the
+    tower
+- from: tabitha
+  to: ghoulish_children
+  relation: released / responsible_for
+  evidence_type: canon_explicit
+  evidence_quote: Tabitha is responsible for the release of the Ghoulish Children
+    from the caverns
+- from: tabitha
+  to: township
+  relation: angered_nature_of
+  evidence_type: canon_explicit
+  evidence_quote: angering the nature of the town by digging in the basement
+- from: tabitha
+  to: faraway_trees
+  relation: transported_outside_by
+  evidence_type: canon_inferred
+  evidence_quote: Tabitha was spotted by people who weren't in the Township and was
+    sent to the hospital
+- from: boyd
+  to: music_box_monster
+  relation: encountered_in_dungeon
+  evidence_type: canon_explicit
+  evidence_quote: After traveling through a Farway Tree, Boyd Stevens is transported
+    to the Dungeon, the lair of the Monster
+- from: boyd
+  to: faraway_trees
+  relation: transported_by
+  evidence_type: canon_explicit
+  evidence_quote: After traveling through a Farway Tree, Boyd Stevens is transported
+    to the Dungeon
+- from: music_box_monster
+  to: township
+  relation: is_part_of
+  evidence_type: canon_explicit
+  evidence_quote: a mysterious and malevolent entity that dwells in the Township
+- from: jade
+  to: from_symbol
+  relation: obsessed_with / sees_visions_of
+  evidence_type: canon_explicit
+  evidence_quote: Jade obsessively draws the symbol he saw on the tree
+- from: jade
+  to: bottle_trees
+  relation: played_melody_at
+  evidence_type: canon_explicit
+  evidence_quote: After Jade Herrera plays the melody at the Bottle Tree
+- from: jade
+  to: miranda
+  relation: played_violin_song_of
+  evidence_type: canon_explicit
+  evidence_quote: Victor then sits on his mother's car and asks Jade to play 'Twinkle,
+    Twinkle, Little Star' on the violin
+- from: fatima_baby
+  to: township
+  relation: trapped_in
+  evidence_type: canon_explicit
+  evidence_quote: Fatima became trapped in the Township
+- from: creatures
+  to: victor
+  relation: killed_childhood_inhabitants_of
+  evidence_type: canon_explicit
+  evidence_quote: everyone else had been killed by the Creatures
+- from: man_in_yellow
+  to: tabitha
+  relation: killed_husband_of
+  evidence_type: canon_explicit
+  evidence_quote: The Man then tears Jim's throat out, killing him
+- from: from_symbol
+  to: ghoulish_children
+  relation: created_from_hope_of
+  evidence_type: canon_explicit
+  evidence_quote: they poured their hope into the roots that became the Symbol
+- from: tabitha
+  to: lighthouse
+  relation: journeyed_to
+  evidence_type: canon_explicit
+  evidence_quote: Tabitha Matthews decides to go to the Lighthouse to try and free
+    the Ghoulish Children
