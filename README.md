@@ -1,98 +1,150 @@
-# llm-wiki-theory-engine
+# LoreMap
 
-AI-методология для построения "карты mystery-сериала или книжной серии" через llm-wiki архитектуру + ensemble theories с adversarial review. Всё внутри Claude Code, без внешних API.
+> Назови сериал - получи AI-архитектора который изучит шоу, предложит варианты структуры базы знаний, построит Obsidian-карту и станет твоим собеседником по этому миру.
 
-## Что делает
+[![Skills.sh](https://img.shields.io/badge/skills.sh-installable-blue)](https://skills.sh)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Берёт любой mystery-сериал или книжную серию и:
+## TL;DR
 
-1. Парсит fandom wiki + reddit топ-теории + создатель-интервью
-2. Раскладывает в structured wiki со status-тегами (canon | fan_theory | speculation)
-3. Строит mystery_graph с canon-evidence связями между узлами
-4. По запросу генерирует obоснованные теории про любую загадку
-5. Adversarial review через subagent ловит дыры
-6. Сохраняет locked predictions с git commit hash
-
-После релиза новых серий validate-режим отмечает HIT/MISS predictions.
-
-## Активация
-
-В Claude Code:
+Юзер в Claude Code пишет:
 
 ```
-"Активируй llm-wiki-theory-engine для https://from.fandom.com и r/FromTVEpix"
+"LoreMap для Severance"
 ```
 
-или
+Skill сначала ИЗУЧАЕТ шоу (preview-research): тип жанра, что центрально, что фаны обсуждают. Потом ПРЕДЛАГАЕТ 3-5 вариантов структуры базы:
 
 ```
-"Построй theory engine для сериала Severance используя его fan wiki и r/SeveranceAppleTVPlus"
+Изучил Severance (Apple TV+, sci-fi corporate thriller). Главное: разделение сознания, MDR floor, мифология Lumon, теории про Cold Harbor.
+
+Варианты базы:
+
+A) Mystery focus - Cold Harbor, файлы рефинеров, мифология Кир Игана
+B) Character split-arc - innie vs outie динамика per character
+C) Lumon corporate map - иерархия, история компании, отделы
+D) Theme analysis - капитализм, идентичность, контроль через дисциплину
+E) Combo
+F) Custom - своя идея структуры
+
+Что выбираешь?
 ```
 
-Skill инициализирует папку проекта, скрапит источники, нормализует, строит граф. Дальше юзер общается:
+Юзер выбирает (включая свой кастомный запрос). Skill строит Obsidian-compatible mind map. Дальше юзер ОБЩАЕТСЯ с Claude который видит всю базу: задаёт вопросы, обсуждает теории, исследует связи.
 
-```
-"Расскажи теорию про Boy in White"
-"Предскажи финал сериала"
-"Какие открытые вопросы остались?"
-"Где противоречия в каноне?"
+## Установка
+
+```bash
+git clone https://github.com/AyanbekDos/loremap.git ~/projects/loremap
+mkdir -p ~/.claude/skills/
+cp -r ~/projects/loremap/skill ~/.claude/skills/loremap
+
+cd ~/projects/loremap
+python3 -m venv .venv
+source .venv/bin/activate
+pip install httpx beautifulsoup4 lxml pyyaml markdownify tenacity
 ```
 
-## Архитектура памяти (memoriki / Karpathy LLM Wiki)
+После - в Claude Code пишешь `"LoreMap для <название>"` и идёшь по conversation flow.
+
+## Главный принцип: НЕ один-размер-всем
+
+Разные сериалы требуют разной структуры базы:
+
+| Шоу | Подходящая структура |
+|-----|---------------------|
+| FROM, Lost, Twin Peaks | Mystery graph + theories + open questions |
+| Game of Thrones, Succession | Family tree + alliances + betrayals + power map |
+| Breaking Bad, BoJack | Character arc maps + moral compass shifts |
+| The Office, Friends | Relationship heatmap + recurring jokes |
+| The Sopranos, The Wire | Crime family tree + power transitions |
+| Severance, Westworld | Mystery + corporate map + character split-arcs |
+| Foundation, The Expanse | Timeline + factions + tech tree |
+| Yellowjackets, Dark | Past-vs-present + character evolution |
+
+И кастомные запросы которые мы ещё не предсказали - "карта всех смертей с поэтикой", "музыкальный гид по сезонам", "анализ еды в Sopranos".
+
+## Архитектура
 
 ```
 project/
-├── raw/                Immutable источники
-│   ├── fandom/         MediaWiki API scrap
-│   └── reddit/         JSON API scrap
-├── wiki/               Claude нормализует и владеет
-│   ├── entities/       Персонажи
-│   ├── concepts/       Места, объекты, символы
-│   ├── episodes/       Эпизоды / главы
-│   ├── theories/       Фан-теории (status: fan_theory)
-│   └── synthesis/      Сводки + наши predictions
-│       ├── mystery_graph.yaml
-│       └── predictions/
-└── CLAUDE.md           Правила для будущих сессий
+├── raw/                       Источники (immutable)
+│   ├── fandom/                MediaWiki API scrape
+│   └── reddit/                Top theories + discussions
+├── wiki/                      Claude нормализует и владеет
+│   ├── entities/              Персонажи
+│   ├── concepts/              Места, объекты, символы
+│   ├── episodes/              Эпизоды / главы
+│   ├── theories/              Фан-теории (status: fan_theory)
+│   └── synthesis/             Сводки + специфичные под выбранный template
+│       ├── mystery_graph.yaml    (если Mystery template)
+│       ├── family_trees.yaml     (если Relationships template)
+│       ├── character_arcs/       (если Character template)
+│       └── ...
+└── CLAUDE.md                  Правила для сессий
 ```
 
-## Файлы skill-а
+Каждая страница с `status: canon | fan_theory | speculation`. Без status LLM мешает в кашу. Markdown + frontmatter + `[[wiki-links]]` - готово для Obsidian.
 
-- `SKILL.md` - инструкции для Claude Code (главный файл активации)
+## Templates встроенные
+
+В `skill/references/templates/`:
+
+- `MYSTERY_TEMPLATE.md` - для шоу с центральной загадкой
+- `RELATIONSHIPS_TEMPLATE.md` - семьи, союзы, предательства
+- `POWER_TEMPLATE.md` - политика, борьба за престол
+- `CHARACTER_TEMPLATE.md` - психологические трансформации
+- `CUSTOM_TEMPLATE.md` - принципы построения произвольной базы
+
+Claude выбирает template based на user choice + adapts под конкретное шоу.
+
+## Что внутри skill
+
+- `SKILL.md` - инструкции активации для Claude Code (главный файл)
+- `scripts/discover.py` - автопоиск fandom + subreddit по названию
 - `scripts/scrape_fandom.py` - универсальный MediaWiki API scraper
-- `scripts/scrape_reddit.py` - универсальный subreddit top-posts scraper
-- `scripts/normalize.py` - нормализация raw -> wiki по доменам с auto-classification
-- `references/MYSTERY_GRAPH_SCHEMA.md` - схема mystery graph
-- `references/PREDICTION_SCHEMA.md` - схема prediction-теории с adversarial review
-- `references/ANTI_PATTERNS.md` - 8 anti-patterns LLM моделей которые надо предотвращать
-- `references/CLAUDE_TEMPLATE.md` - шаблон CLAUDE.md для проекта юзера
-- `examples/from/` - полный showcase на сериале FROM (MGM+/Epix)
+- `scripts/scrape_reddit.py` - универсальный subreddit top-posts
+- `scripts/normalize.py` - raw → wiki auto-classification
+- `references/` - schemas + templates + anti-patterns
+- `examples/from/` - showcase на сериале FROM
 
-## Showcase: FROM
+## После стройки - chat с Claude
 
-В `examples/from/` лежит работающий пример:
+Юзер общается:
+- "Расскажи про этого персонажа"
+- "Где упоминается этот символ?"
+- "Обсудим теорию из reddit-поста [link]"
+- "Что бы изменилось если бы X не умер?"
+- "Какие противоречия в каноне?"
+- "Сравни как Daenerys трансформировалась по сезонам"
+- "Хочу написать фанфик - кто из персонажей подойдёт под сюжет где Y?"
 
-- 17-узловой mystery_graph (Boy in White, Man in Yellow, Township, Children, Bottle Trees, Faraway, Talismans, Symbol, Creatures, Music Box, Lighthouse, Victor, Tabitha, Miranda, Fatima baby, Boyd, Jade) с 49 canon-evidence связями
-- Sample prediction "Boy in White" с adversarial review GPT (раньше использовали external API, теперь общая методология)
-- Observed anti-patterns AP-001 до AP-008 (реально пойманные ошибки на FROM)
+Claude видит всю базу через wiki + при желании спавнит subagent для adversarial-разбора теорий.
 
 ## Anti-patterns которые методология предотвращает
 
-- AP-001 Temporal compression: события из старых сезонов как "недавние"
-- AP-002 Hallucination POV confusion: видения как реальность
-- AP-003 Scene boundary contamination: механические окна ломают сцены
-- AP-004 Mentioned vs present: упоминание считается присутствием
-- AP-005 Single-key fallacy: теория всё одним ключом объясняет
-- AP-006 Creator-lied escape hatch
-- AP-007 Reddit selection bias
-- AP-008 Verbose validation rules
+LLM регулярно ошибается на mystery-контенте. LoreMap включает 8 проверенных anti-patterns:
 
-## Зачем нужно
-
-Mystery-сериалы (FROM, Severance, Yellowjackets, Twin Peaks, Lost) и незавершённые книжные серии (ASOIAF, Stormlight) имеют огромные фанатские теории. Но фаны не систематизируют. Эта методология систематизирует + добавляет AI-prediction с локальным adversarial review.
-
-Reddit фанаты любого шоу могут за вечер построить ИИ-карту своего сериала и получить обоснованные predictions.
+| ID | Проблема |
+|----|----------|
+| AP-001 | Temporal compression - события из S1 как "current" в S4 |
+| AP-002 | Hallucination POV confusion - видения как реальность |
+| AP-003 | Scene boundary contamination |
+| AP-004 | "Mentioned" treated as "present" |
+| AP-005 | Single-key fallacy |
+| AP-006 | "Creator-lied" escape hatch |
+| AP-007 | Reddit selection bias |
+| AP-008 | Verbose validation rules |
 
 ## Лицензия
 
-Личный исследовательский проект. Не хранит полные субтитры/расшифровки шоу. Использует только публично доступные fan wiki + Reddit.
+MIT. Используй, форкай, продавай. Не хранит полные субтитры/расшифровки шоу - только публичные fan-wiki + Reddit.
+
+## Authors
+
+Концепт: [Aianbek Dossumbayev](https://github.com/AyanbekDos)
+Implementation: совместно с Claude Code (Claude Opus 4.7)
+
+Архитектура на основе:
+- [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Andrej Karpathy
+- [memoriki](https://github.com/AyanbekDos/memoriki) (предыдущий проект)
