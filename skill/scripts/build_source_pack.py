@@ -259,11 +259,13 @@ def main() -> None:
     # 03+ EPISODES by season (или filtered по scope)
     episodes = buckets.get("episode", [])
     _, by_season = build_episodes_bundle(episodes)
-    season_filter = None
-    if args.scope == "s1-only":
-        season_filter = 1
-    elif args.scope == "s1-s2":
-        season_filter = None  # обработаем ниже
+
+    # Episodes без detectable season - в отдельный bundle
+    detected_eps = set()
+    for s, eps in by_season.items():
+        for e in eps:
+            detected_eps.add(e)
+    undetected_eps = [e for e in episodes if e not in detected_eps]
 
     for s, eps in sorted(by_season.items()):
         if args.scope == "s1-only" and s != 1:
@@ -282,6 +284,36 @@ def main() -> None:
         p.write_text(md, encoding="utf-8")
         files_created.append(p.name)
         print(f"  {p.name}: {len(eps)} episodes")
+
+    if undetected_eps and args.scope != "s1-only":
+        md = strict_label(
+            "CANON",
+            args.scope,
+            "all-episodes",
+            2,
+            "Canon episode recaps без detectable season. Используется для шоу без season структуры (например, мультсериалы из отдельных серий).",
+        )
+        md += build_bundle(undetected_eps, "Episodes (all)")
+        p = out / "06_CANON_EPISODES_ALL.md"
+        p.write_text(md, encoding="utf-8")
+        files_created.append(p.name)
+        print(f"  {p.name}: {len(undetected_eps)} episodes (no season)")
+
+    # 10 UNKNOWN/MISC pages (locations, items, lore-страницы)
+    unknown_pages = buckets.get("unknown", [])
+    if unknown_pages:
+        md = strict_label(
+            "FANDOM_INTERPRETATION",
+            args.scope,
+            args.scope,
+            3,
+            "Various wiki pages (locations, items, lore, behind-the-scenes). Generally canon but may include fan interpretation. Treat with care.",
+        )
+        md += build_bundle(unknown_pages, "Other Lore Pages")
+        p = out / "10_FANDOM_OTHER.md"
+        p.write_text(md, encoding="utf-8")
+        files_created.append(p.name)
+        print(f"  {p.name}: {len(unknown_pages)} misc pages")
 
     # 07 REDDIT THEORIES HIGH (score >= 1000, theory flairs)
     if args.scope != "s1-only":  # spoiler-safe не включает теории
